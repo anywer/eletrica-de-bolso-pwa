@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1320">
+  <meta name="description" content="Organização preliminar de projetos e manutenções elétricas, offline.">
+  <title>Elétrica de Bolso 0.7</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.7</span></div>
+    <button id="installBtn" class="ghost" hidden>Instalar</button>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <button data-view="inicio" class="active">Início</button><button data-view="cadastros">Clientes</button>
+    <button data-view="planta">Planta</button><button data-view="dimensionamento">Dimensionamento</button>
+    <button data-view="manutencoes">Manutenções</button><button data-view="backup">Backup</button>
+  </nav>
+
+  <main>
+    <section id="inicio" class="view active">
+      <div class="hero"><div><p class="eyebrow">TRABALHO OFFLINE • DADOS NO APARELHO</p><h1>Projetos elétricos organizados por cliente</h1><p>Cadastre a obra, desenhe uma planta simplificada, registre circuitos e mantenha o histórico para futuras visitas.</p></div><button class="primary" data-go="cadastros">Começar cadastro</button></div>
+      <div id="stats" class="stats"></div>
+      <article class="notice warning"><strong>Uso profissional responsável</strong><p>Resultados e dimensionamentos são preliminares. Exigem levantamento em campo e validação por profissional habilitado conforme NBR 5410 vigente, padrão da distribuidora, esquema de aterramento, DR, DPS, proteção contra sobrecorrente, queda de tensão, capacidade de interrupção e demais condições da instalação.</p></article>
+      <article class="card"><h2>Projeto ativo</h2><div id="activeSummary"></div></article>
+    </section>
+
+    <section id="cadastros" class="view">
+      <div class="section-head"><div><p class="eyebrow">CARTEIRA</p><h1>Clientes e obras</h1></div><button id="newClient" class="primary">+ Cliente</button></div>
+      <div class="split"><aside><label>Buscar<input id="clientSearch" type="search" placeholder="Nome, telefone ou documento"></label><div id="clientList" class="list"></div></aside><div id="clientDetail" class="card empty-state">Selecione ou crie um cliente.</div></div>
+    </section>
+
+    <section id="planta" class="view">
+      <div class="section-head"><div><p class="eyebrow">EDITOR SIMPLIFICADO</p><h1>Planta baixa</h1><p id="planContext" class="muted"></p></div><div class="actions"><button id="newRoom">+ Cômodo</button><button id="fitPlan" class="ghost">Centralizar</button></div></div>
+      <div id="noProjectPlan" class="empty-state card">Selecione um projeto em Clientes para editar a planta.</div>
+      <div id="planWorkspace" hidden>
+        <div class="toolbar" role="toolbar" aria-label="Ferramentas da planta">
+          <button data-tool="select" class="active">↖ Selecionar</button><button data-tool="tug">◉ TUG</button><button data-tool="tue">⬢ TUE</button><button data-tool="switch">⌁ Interruptor</button><button data-tool="light">✦ Iluminação</button><button data-tool="segment">╱ Trecho</button>
+        </div>
+        <div class="plan-layout"><div id="planBoard" class="plan-board" tabindex="0" aria-label="Editor da planta"></div><aside id="inspector" class="card"><h2>Propriedades</h2><p class="muted">Selecione um elemento.</p></aside></div>
+        <p class="hint">Toque em uma ferramenta e depois dentro de um cômodo. Arraste pontos para posicionar. Use trechos para registrar percurso e comprimento.</p>
+      </div>
+    </section>
+
+    <section id="dimensionamento" class="view">
+      <div class="section-head"><div><p class="eyebrow">MEMÓRIA PRELIMINAR</p><h1>Dimensionamento</h1><p id="sizingContext" class="muted"></p></div><button id="newCircuit" class="primary">+ Circuito</button></div>
+      <div id="sizingEmpty" class="empty-state card">Selecione um projeto em Clientes.</div>
+      <div id="sizingContent" hidden>
+        <article class="notice warning"><strong>Não é aprovação normativa.</strong><p>Revise método de instalação, temperatura, agrupamento, condutores, corrente de projeto, capacidade de condução, proteção, curto-circuito e queda de tensão. Confirme a NBR 5410 vigente e as exigências locais antes da execução.</p></article>
+        <div class="grid-2"><article class="card"><h2>Dados da instalação</h2><div id="sizingForm"></div></article><article class="card"><h2>Resumo</h2><div id="loadSummary"></div></article></div>
+        <article class="card"><div class="section-head compact"><h2>Circuitos</h2><button id="autoCircuits" class="ghost">Sugerir a partir da planta</button></div><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Tensão</th><th>Potência</th><th>Corrente estimada</th><th>Condutor</th><th>Disjuntor</th><th></th></tr></thead><tbody id="circuitTable"></tbody></table></div></article>
+        <article class="card"><h2>Quadro e equipotencialização</h2><div id="boardChecklist"></div></article>
+      </div>
+    </section>
+
+    <section id="manutencoes" class="view">
+      <div class="section-head"><div><p class="eyebrow">RASTREABILIDADE</p><h1>Histórico de manutenções</h1><p id="maintenanceContext" class="muted"></p></div><button id="newMaintenance" class="primary">+ Registro</button></div>
+      <div id="maintenanceList" class="timeline"></div>
+    </section>
+
+    <section id="backup" class="view">
+      <div class="section-head"><div><p class="eyebrow">PORTABILIDADE</p><h1>Backup e restauração</h1></div></div>
+      <div class="grid-2"><article class="card"><h2>Exportar</h2><p>Baixe uma cópia completa de clientes, imóveis, projetos, plantas, dimensionamentos e manutenções.</p><button id="exportBackup" class="primary">Baixar backup JSON</button></article><article class="card"><h2>Importar</h2><p>O arquivo é validado antes da restauração. Você pode mesclar com os dados atuais ou substituí-los.</p><label class="file-button">Escolher backup<input id="importFile" type="file" accept="application/json,.json"></label><div id="importPreview"></div></article></div>
+      <article class="card danger-zone"><h2>Privacidade e armazenamento</h2><p>Os dados ficam somente neste navegador/aparelho. Não há nuvem nem conta. Faça backups periódicos; limpar os dados do navegador pode apagar tudo.</p><button id="clearData" class="danger">Apagar todos os dados</button></article>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="section-head compact"><h2 id="modalTitle"></h2><button id="modalClose" class="icon" aria-label="Fechar">×</button></div><form id="modalForm"></form></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

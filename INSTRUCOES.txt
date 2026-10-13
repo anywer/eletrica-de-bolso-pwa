@@ -1,0 +1,35 @@
+ELÉTRICA DE BOLSO PWA 0.7
+
+ABRIR NO COMPUTADOR
+1. Extraia o ZIP.
+2. Na pasta extraída, inicie um servidor HTTP local.
+   Exemplo com Python instalado: python -m http.server 8080
+3. Abra http://localhost:8080 no Chrome ou Edge.
+4. Use o botão "Instalar" quando ele aparecer.
+
+ABRIR NO CELULAR
+1. Publique os mesmos arquivos em qualquer hospedagem estática HTTPS gratuita,
+   ou sirva a pasta em sua rede local.
+2. Abra o endereço no navegador.
+3. No menu, escolha "Adicionar à tela inicial" ou "Instalar aplicativo".
+4. Depois da primeira abertura completa, o app funciona offline.
+
+PRIMEIROS PASSOS
+1. Clientes > + Cliente.
+2. Cadastre o imóvel/obra e crie um projeto.
+3. Planta > + Cômodo; selecione uma ferramenta e toque dentro do cômodo.
+4. Para um trecho, toque em "Trecho", depois em dois pontos e informe o comprimento.
+5. Dimensionamento > cadastre ou sugira circuitos e revise todas as premissas.
+6. Manutenções > registre cada visita/serviço.
+7. Backup > baixe um JSON regularmente.
+
+IMPORTANTE
+Os cálculos e registros são preliminares. Não representam aprovação normativa.
+Exigem validação em campo por profissional habilitado segundo a NBR 5410 vigente,
+regras da distribuidora, esquema de aterramento e proteções aplicáveis.
+
+DADOS
+Não há servidor nem nuvem. Os dados ficam no navegador. Limpar dados do navegador
+pode apagá-los. Guarde backups JSON fora do aparelho.
+
+VERSÃO: 0.7.0

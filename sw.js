@@ -1,5 +1,5 @@
-const CACHE='eletrica-bolso-v0.9.1.1';
-const ASSETS=['./','./index.html','./styles.css','./firebase-sync.js','./app.js','./manifest.webmanifest','./icon.svg'];
+const CACHE='eletrica-bolso-v0.10.0';
+const ASSETS=['./','./index.html','./styles.css','./firebase-sync.js','./planner-geometry.js','./planner-model.js','./planner-canvas.js','./planner-bridge.js','./app.js','./manifest.webmanifest','./icon.svg','./LICENSE-room-planner.md'];
 
 self.addEventListener('install',event=>event.waitUntil(
   caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())

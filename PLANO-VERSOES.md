@@ -39,7 +39,16 @@ Princípios: celular primeiro, funcionamento offline, custo zero no núcleo e re
 - TUE nomeada e ligada ao equipamento, potência e tensão correspondentes.
 - Ícones diferentes quando pontos ocuparem a mesma posição 2D, evitando sobreposição invisível.
 
-## v0.10 — importação assistida de planta
+## v0.10 — motor arquitetônico em escala
+
+- Integração seletiva do motor MIT `countzero/ai_room_planner`.
+- Paredes e vértices em centímetros, independentes da câmera.
+- Detecção automática de ambientes fechados e cálculo de área.
+- Encaixe de vértices, grade de 10 cm e movimentação conjunta de encontros.
+- Zoom, pinça e navegação sem alterar posições ou dimensões.
+- Conversão automática dos cômodos das versões anteriores.
+
+## v0.11 — importação assistida de planta
 
 1. Importar PDF ou imagem como referência de fundo.
 2. Para PDF vetorial, aproveitar linhas e textos quando tecnicamente possível.
@@ -49,7 +58,7 @@ Princípios: celular primeiro, funcionamento offline, custo zero no núcleo e re
 
 Essa abordagem funciona offline e não precisa de IA para entregar valor. A imagem de referência poderá ser removida depois da conversão.
 
-## v0.11 — circuitos e quantitativo preliminar
+## v0.12 — circuitos e quantitativo preliminar
 
 - Relacionar cada ponto ao circuito e ao quadro.
 - Modelar fases, neutro, proteção, retornos e viajantes separadamente.
@@ -58,7 +67,7 @@ Essa abordagem funciona offline e não precisa de IA para entregar valor. A imag
 - Produzir lista de materiais e resumo para orçamento com margem configurável separada da medida real.
 - Destacar pontos sem circuito, trechos sem comprimento e cargas sem potência.
 
-## v0.12 — IA opcional para sugerir a planta
+## v0.13 — IA opcional para sugerir a planta
 
 - Detectar paredes, ambientes, cotas, portas e textos em croquis ou documentos digitalizados.
 - Gerar somente uma sugestão editável; nunca substituir a confirmação do usuário.

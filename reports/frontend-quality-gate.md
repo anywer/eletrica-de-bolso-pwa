@@ -1,55 +1,54 @@
-# Auditoria de qualidade frontend — v0.9.1.1
+# Auditoria de qualidade frontend — v0.10.0
 
 Nível: **Auditoria profunda**
 
 ## Escopo
 
-Geometria proporcional dos cômodos, entrada por área ou dimensões, encaixe magnético, conexões de arestas, zoom por pinça, etapa elétrica por cômodo, paredes compartilhadas, persistência e migração.
+Integração seletiva do motor MIT `countzero/ai_room_planner`, coordenadas reais em centímetros, câmera independente, encaixe de vértices, edição de paredes, migração dos cômodos antigos, etapa elétrica, persistência offline/Firebase e experiência móvel.
 
 ## Validações executadas
 
-- Sintaxe de `app.js` e `sw.js`.
-- Verificação estática do modelo, interface, autenticação, Firestore, cache e manifesto.
-- Chromium com viewports 1280 × 800, 768 × 1024, 390 × 844 e 844 × 390.
-- Mouse, teclado em formulários e modal, ponteiros de toque simulados para pinça e navegação responsiva.
-- Fluxo completo: conta simulada, cliente, imóvel, projeto, três cômodos, cálculo de área, proporção estreita, encaixe pelo rótulo, fixar/liberar posição, coincidência manual, confirmação, ponto compartilhado, circuitos, manutenção, recarga e migração da v0.7.
+- Sintaxe de todos os arquivos JavaScript.
+- Teste estático da interface, autenticação, regras, licença, cache offline e manifesto.
+- Teste unitário da geometria: ambiente 4 × 3 m, área de 12 m², atualização atômica de vértices conectados e invariância diante da câmera.
+- Chromium em 1280 × 800 e 390 × 844.
+- Fluxo real: autenticação simulada, cliente, imóvel, projeto, cômodo em escala, zoom, enquadramento, pinça, confirmação, ponto elétrico, recarga e migração da v0.9.
+- Verificação de erros no console e de rolagem horizontal no viewport móvel.
 
 ## Problemas encontrados e correções
 
 ### Importante
 
-- O tamanho mínimo de 100 × 80 px deformava cômodos estreitos. Removido: largura e profundidade agora controlam diretamente a proporção visual.
-- O rótulo do cômodo bloqueava o arraste e a tolerância do ímã variava visualmente com o zoom. Corrigido o alvo de toque e aplicada tolerância visual constante.
-- Acrescentados feedback verde de encaixe e controles explícitos para coincidir a aresta mais próxima e fixar/liberar a posição.
-- O arraste acumulava deslocamentos intermediários e impedia o encaixe. Corrigido usando a posição inicial como referência.
-- O bloqueio contra clique sintético após pinça podia impedir o próximo ponto. Corrigido com uma janela curta baseada em tempo.
-- Redimensionar ou afastar um cômodo podia manter uma relação compartilhada antiga. Corrigido com recálculo das paredes e reposicionamento proporcional dos pontos.
+- O editor anterior aplicava o zoom sobre os próprios elementos e podia reconstruí-los durante a pinça. Substituído por canvas com câmera separada da geometria.
+- Atualizar paredes conectadas uma a uma podia desmontar temporariamente o polígono e perder metadados do cômodo. Criada atualização atômica dos vértices.
+- Os manipuladores antigos de pinça também recebiam eventos do novo canvas. Limitados exclusivamente à etapa elétrica.
+- Eventos sintéticos ou navegadores sem ponteiro ativo podiam rejeitar `setPointerCapture`. Adicionada proteção sem alterar o gesto real.
+- Ao alterar a arquitetura após lançar pontos elétricos, as coordenadas agora acompanham proporcionalmente o novo limite do ambiente.
 
-### Observação
+## Qualidade e manutenção
 
-- O reconhecimento de parede compartilhada é confiável para cômodos alinhados em 0° ou 180°. Cômodos em ângulos diferentes continuam editáveis, mas não recebem união automática de parede.
-- O gesto foi validado com eventos de toque simulados no Chromium, não em aparelho físico ou leitor de tela.
-
-## Qualidade de código
-
-A implementação reutiliza o modelo retangular e o armazenamento existentes, sem dependências novas. Conexões e compartilhamentos são normalizados na carga e preservados no backup.
+- A integração reutiliza apenas geometria, modelo e canvas do projeto MIT; não importa o armazenamento, histórico ou ferramentas originais, evitando duplicar a arquitetura do aplicativo.
+- `planner-bridge.js` concentra a compatibilidade com projetos, migração e etapa elétrica.
+- A licença e a atribuição do componente estão preservadas em `LICENSE-room-planner.md`.
+- Não foram introduzidos `eval`, `new Function`, chamadas de rede do motor ou novas dependências de execução.
 
 ## Performance e fluidez
 
-- Medido: arquivos principais somam aproximadamente 77 KB sem compactação e nenhuma dependência foi adicionada.
-- Observado: pinça, arraste e troca de cômodo responderam nos cenários automatizados sem erros de console.
-- Inferido: a atualização por `requestAnimationFrame` limita reconstruções durante a pinça; plantas muito grandes ainda devem ser acompanhadas em aparelho modesto.
-- Não testado: FPS, consumo de memória e CPU em dispositivo físico.
+- O desenho é feito em um único canvas e gestos não recriam a árvore de cômodos.
+- Medidas e paredes só são persistidas quando a edição termina; movimentos intermediários redesenham apenas o canvas.
+- Inferido: o novo modelo reduz layout/reflow em plantas grandes. FPS, CPU e memória em aparelho físico modesto não foram medidos.
 
 ## Responsividade e acessibilidade
 
-Não houve rolagem horizontal da página nos quatro viewports. Alvos de toque, foco visível, retorno de foco do modal, rótulos, estados pressionados e mensagens dinâmicas foram preservados. Leitor de tela, contraste instrumental e zoom do navegador a 200% não foram testados.
+- O canvas usa `touch-action: none`, pinça nativa do editor, ferramentas com alvo mínimo de 44 px, foco visível e nome acessível.
+- No celular, o inspetor fica antes do canvas e a planta ocupa 58% da altura da tela.
+- O formulário **+ Cômodo** continua sendo uma alternativa operável por teclado para criar ambientes com medidas exatas.
+- Leitor de tela, contraste instrumental, zoom do navegador a 200% e aparelho físico não foram testados.
 
 ## Regressão
 
-Autenticação, cadastro, migração, persistência, pontos elétricos, trechos, atualização de circuitos, histórico e modo offline permaneceram funcionais nos testes executados.
+Cadastro, separação por cliente, autenticação, armazenamento offline, sincronização Firebase, etapa elétrica, dimensionamento, manutenções e backup permaneceram no mesmo modelo de dados. Plantas antigas são convertidas na primeira abertura do editor e o original é preservado no backup automático da migração de esquema.
 
 ## Status
 
 **Aprovado com observações**
-

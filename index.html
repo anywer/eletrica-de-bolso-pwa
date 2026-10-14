@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1320">
   <meta name="application-name" content="Elétrica de Bolso">
   <meta name="description" content="Projetos e manutenções elétricas com funcionamento offline e sincronização segura.">
-  <title>Elétrica de Bolso 0.9.1.1</title>
+  <title>Elétrica de Bolso 0.10.0</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
     </div>
   </section>
   <header class="topbar">
-    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.9.1.1</span></div>
+    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.10.0</span></div>
     <div class="account-area"><span id="syncStatus" class="sync-status" role="status" aria-live="polite">Conectando…</span><span id="userEmail" class="user-email" hidden></span><button id="logoutBtn" class="ghost" hidden>Sair</button><button id="installBtn" class="ghost" hidden>Instalar</button></div>
   </header>
 
@@ -70,7 +70,7 @@
       <div id="noProjectPlan" class="empty-state card">Selecione um projeto em Clientes para editar a planta.</div>
       <div id="planWorkspace" hidden>
         <div class="plan-steps" role="group" aria-label="Etapa da planta"><button id="architectureStage" class="active" aria-pressed="true"><span>1</span> Planta da casa</button><button id="electricalStage" aria-pressed="false"><span>2</span> Elétrica</button></div>
-        <article id="architectureGuide" class="notice"><strong>Monte primeiro a construção</strong><p>Informe as medidas reais, posicione e rotacione os cômodos. Os pontos elétricos aparecem somente depois da confirmação.</p><button id="confirmArchitecture" class="primary">Confirmar planta e continuar</button></article>
+        <article id="architectureGuide" class="notice"><strong>Monte primeiro a construção</strong><p>As paredes usam medidas reais. O zoom e a pinça movem somente a câmera, sem alterar o desenho.</p><div id="architectureTools" class="toolbar architecture-tools" role="toolbar" aria-label="Ferramentas da planta"><button data-plan-tool="select" class="active" aria-pressed="true">↖ Selecionar</button><button data-plan-tool="wall" aria-pressed="false">╱ Parede</button><button data-plan-tool="grab" aria-pressed="false">✋ Navegar</button><button id="deletePlanItem" class="danger" type="button">Excluir parede</button></div><button id="confirmArchitecture" class="primary">Confirmar planta e continuar</button></article>
         <div id="electricalRoomBar" class="room-focus-bar" hidden><label>Cômodo<select id="electricalRoomSelect"></select></label><div class="actions"><button id="previousRoom" class="ghost" aria-label="Cômodo anterior">←</button><button id="nextRoom" class="ghost" aria-label="Próximo cômodo">→</button></div><p id="sharedWallSummary" class="muted"></p></div>
         <div id="electricalTools" class="toolbar" role="toolbar" aria-label="Ferramentas elétricas" hidden>
           <button data-tool="select" class="active" aria-pressed="true">↖ Selecionar</button><button data-tool="tug" aria-pressed="false">◉ TUG</button><button data-tool="tue" aria-pressed="false">⬢ TUE</button><button data-tool="switch" aria-pressed="false">⌁ Interruptor</button><button data-tool="light" aria-pressed="false">✦ Iluminação</button><button data-tool="board" aria-pressed="false">▣ Quadro</button><button data-tool="segment" aria-pressed="false">╱ Trecho</button>
@@ -111,6 +111,10 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
   <script src="firebase-sync.js" defer></script>
+  <script src="planner-geometry.js" defer></script>
+  <script src="planner-model.js" defer></script>
+  <script src="planner-canvas.js" defer></script>
+  <script src="planner-bridge.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

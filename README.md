@@ -1,4 +1,4 @@
-# Elétrica de Bolso PWA — versão 0.9.1
+# Elétrica de Bolso PWA — versão 0.9.1.1
 
 Aplicativo offline-first, com autenticação e sincronização no Firebase, para organizar clientes, imóveis/obras, projetos elétricos, plantas simplificadas, dimensionamentos preliminares e histórico de manutenção.
 
@@ -9,7 +9,7 @@ Aplicativo offline-first, com autenticação e sincronização no Firebase, para
 3. Crie uma conta, confirme o e-mail e entre.
 4. Cadastre um cliente, um imóvel e um projeto na seção **Clientes**.
 5. Em **Planta**, monte primeiro a casa por largura × profundidade ou por área + largura. O desenho mantém área e dimensões vinculadas.
-6. Use o ímã para coincidir arestas. Cômodos conectados se movem juntos até usar **Soltar arestas**.
+6. Use o ímã para coincidir arestas. Também é possível selecionar um cômodo e usar **Coincidir aresta mais próxima**, **Fixar posição** e **Soltar arestas**.
 7. Confirme a planta para liberar a etapa **Elétrica**, escolha um cômodo e posicione quadro, iluminação, TUG, TUE e interruptores. Pontos em paredes compartilhadas aparecem nos dois ambientes.
 8. Em **Dimensionamento**, use **Atualizar pela planta** para trazer potências, cômodos e comprimentos registrados. Os valores são memória preliminar, não aprovação normativa.
 9. Em **Backup**, exporte periodicamente o arquivo JSON e guarde-o em local seguro.
@@ -18,7 +18,7 @@ Aplicativo offline-first, com autenticação e sincronização no Firebase, para
 
 - Dados ficam no aparelho para uso offline e são sincronizados no documento `users/{uid}/app/state` do Firestore.
 - Cada usuário autenticado possui uma chave local própria; a base da v0.7 é vinculada à primeira conta confirmada que entrar no aparelho.
-- A v0.9.1 preserva a base criada desde a v0.7 e também tenta importar automaticamente dados das chaves legadas `eletricaDeBolso`, `eletrica-de-bolso`, `eletricaBolsoData` e `edbData`.
+- A v0.9.1.1 preserva a base criada desde a v0.7 e também tenta importar automaticamente dados das chaves legadas `eletricaDeBolso`, `eletrica-de-bolso`, `eletricaBolsoData` e `edbData`.
 - Antes de uma migração, importação substitutiva ou limpeza, o app guarda uma cópia local de recuperação.
 - Registros são ligados por identificadores de cliente, imóvel e projeto para impedir mistura na interface.
 

@@ -1,4 +1,4 @@
-# Revisão defensiva — v0.9.1
+# Revisão defensiva — v0.9.1.1
 
 - Os dados locais continuam separados por usuário autenticado.
 - A sincronização usa o caminho `users/{uid}/app/state` e as regras exigem UID correspondente e e-mail verificado.

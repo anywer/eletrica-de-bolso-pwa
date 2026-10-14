@@ -1,4 +1,4 @@
-ELÉTRICA DE BOLSO PWA 0.9.1
+ELÉTRICA DE BOLSO PWA 0.9.1.1
 
 ABRIR NO COMPUTADOR
 1. Extraia o ZIP.
@@ -19,7 +19,8 @@ PRIMEIROS PASSOS
 2. Clientes > + Cliente.
 3. Cadastre o imóvel/obra e crie um projeto diretamente nele.
 4. Planta > + Cômodo; informe por dimensões ou por área + largura.
-5. Use o ímã para encaixar arestas; conexões podem ser soltas nas propriedades.
+5. Use o ímã para encaixar arestas. Nas propriedades, também há Coincidir aresta,
+   Fixar/Liberar posição e Soltar arestas.
 6. Enquadre a casa e confirme a planta.
 7. Na etapa Elétrica, selecione um cômodo e escolha uma ferramenta.
 8. Pontos próximos de uma parede compartilhada aparecem nos dois cômodos.
@@ -37,4 +38,4 @@ DADOS
 Os dados ficam no aparelho para uso offline e são sincronizados no Firestore da conta.
 Cada conta usa uma área própria. Guarde também backups JSON fora do aparelho.
 
-VERSÃO: 0.9.1
+VERSÃO: 0.9.1.1

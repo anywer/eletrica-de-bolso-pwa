@@ -1,4 +1,4 @@
-# Auditoria de qualidade frontend — v0.9.1
+# Auditoria de qualidade frontend — v0.9.1.1
 
 Nível: **Auditoria profunda**
 
@@ -12,12 +12,15 @@ Geometria proporcional dos cômodos, entrada por área ou dimensões, encaixe ma
 - Verificação estática do modelo, interface, autenticação, Firestore, cache e manifesto.
 - Chromium com viewports 1280 × 800, 768 × 1024, 390 × 844 e 844 × 390.
 - Mouse, teclado em formulários e modal, ponteiros de toque simulados para pinça e navegação responsiva.
-- Fluxo completo: conta simulada, cliente, imóvel, projeto, dois cômodos, cálculo de área, encaixe, soltar/reconectar arestas, confirmação, ponto compartilhado, circuitos, manutenção, recarga e migração da v0.7.
+- Fluxo completo: conta simulada, cliente, imóvel, projeto, três cômodos, cálculo de área, proporção estreita, encaixe pelo rótulo, fixar/liberar posição, coincidência manual, confirmação, ponto compartilhado, circuitos, manutenção, recarga e migração da v0.7.
 
 ## Problemas encontrados e correções
 
 ### Importante
 
+- O tamanho mínimo de 100 × 80 px deformava cômodos estreitos. Removido: largura e profundidade agora controlam diretamente a proporção visual.
+- O rótulo do cômodo bloqueava o arraste e a tolerância do ímã variava visualmente com o zoom. Corrigido o alvo de toque e aplicada tolerância visual constante.
+- Acrescentados feedback verde de encaixe e controles explícitos para coincidir a aresta mais próxima e fixar/liberar a posição.
 - O arraste acumulava deslocamentos intermediários e impedia o encaixe. Corrigido usando a posição inicial como referência.
 - O bloqueio contra clique sintético após pinça podia impedir o próximo ponto. Corrigido com uma janela curta baseada em tempo.
 - Redimensionar ou afastar um cômodo podia manter uma relação compartilhada antiga. Corrigido com recálculo das paredes e reposicionamento proporcional dos pontos.

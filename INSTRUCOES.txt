@@ -1,4 +1,4 @@
-ELÉTRICA DE BOLSO PWA 0.7
+ELÉTRICA DE BOLSO PWA 0.8
 
 ABRIR NO COMPUTADOR
 1. Extraia o ZIP.
@@ -15,13 +15,14 @@ ABRIR NO CELULAR
 4. Depois da primeira abertura completa, o app funciona offline.
 
 PRIMEIROS PASSOS
-1. Clientes > + Cliente.
-2. Cadastre o imóvel/obra e crie um projeto.
-3. Planta > + Cômodo; selecione uma ferramenta e toque dentro do cômodo.
-4. Para um trecho, toque em "Trecho", depois em dois pontos e informe o comprimento.
-5. Dimensionamento > cadastre ou sugira circuitos e revise todas as premissas.
-6. Manutenções > registre cada visita/serviço.
-7. Backup > baixe um JSON regularmente.
+1. Crie uma conta, confirme o e-mail recebido e entre.
+2. Clientes > + Cliente.
+3. Cadastre o imóvel/obra e crie um projeto diretamente nele.
+4. Planta > + Cômodo; selecione uma ferramenta e toque dentro do cômodo.
+5. Para um trecho, toque em "Trecho", depois em dois pontos e informe o comprimento.
+6. Dimensionamento > cadastre ou sugira circuitos e revise todas as premissas.
+7. Manutenções > registre cada visita/serviço.
+8. Backup > baixe um JSON regularmente.
 
 IMPORTANTE
 Os cálculos e registros são preliminares. Não representam aprovação normativa.
@@ -29,7 +30,8 @@ Exigem validação em campo por profissional habilitado segundo a NBR 5410 vigen
 regras da distribuidora, esquema de aterramento e proteções aplicáveis.
 
 DADOS
-Não há servidor nem nuvem. Os dados ficam no navegador. Limpar dados do navegador
-pode apagá-los. Guarde backups JSON fora do aparelho.
+Os dados ficam no aparelho para uso offline e são sincronizados no Firestore da conta.
+Cada conta usa uma área própria. Guarde também backups JSON fora do aparelho.
 
-VERSÃO: 0.7.0
+VERSÃO: 0.8.0
+

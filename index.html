@@ -4,15 +4,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1320">
-  <meta name="description" content="Organização preliminar de projetos e manutenções elétricas, offline.">
-  <title>Elétrica de Bolso 0.7</title>
+  <meta name="description" content="Projetos e manutenções elétricas com funcionamento offline e sincronização segura.">
+  <title>Elétrica de Bolso 0.8</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="auth-pending">
+  <section id="authGate" class="auth-gate" aria-labelledby="authTitle">
+    <div class="auth-card">
+      <div class="auth-brand"><span aria-hidden="true">⚡</span><div><strong>Elétrica de Bolso</strong><small>Conta segura e sincronização</small></div></div>
+      <div id="loginBox">
+        <p class="eyebrow">ACESSO À SUA CARTEIRA</p>
+        <h1 id="authTitle">Entrar</h1>
+        <p class="muted">Use a mesma conta no celular e no computador.</p>
+        <form id="loginForm" class="auth-form">
+          <label>E-mail<input id="authEmail" name="email" type="email" autocomplete="email" required></label>
+          <label>Senha<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="6" required></label>
+          <button class="primary" type="submit">Entrar</button>
+          <button id="createAccount" type="button">Criar conta</button>
+          <button id="resetPassword" class="link-button" type="button">Esqueci minha senha</button>
+        </form>
+      </div>
+      <div id="verifyBox" hidden>
+        <p class="eyebrow">CONFIRME SEU E-MAIL</p>
+        <h1>Verificação necessária</h1>
+        <p>Enviamos uma mensagem para <strong id="verifyEmail"></strong>. Abra o link recebido antes de sincronizar os projetos.</p>
+        <div class="auth-actions">
+          <button id="checkVerification" class="primary" type="button">Já verifiquei</button>
+          <button id="resendVerification" type="button">Reenviar e-mail</button>
+          <button id="verifyLogout" class="link-button" type="button">Usar outra conta</button>
+        </div>
+      </div>
+      <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+      <p class="auth-note">Os dados continuam disponíveis offline neste aparelho e são sincronizados quando houver internet.</p>
+    </div>
+  </section>
   <header class="topbar">
-    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.7</span></div>
-    <button id="installBtn" class="ghost" hidden>Instalar</button>
+    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.8</span></div>
+    <div class="account-area"><span id="syncStatus" class="sync-status" role="status" aria-live="polite">Conectando…</span><span id="userEmail" class="user-email" hidden></span><button id="logoutBtn" class="ghost" hidden>Sair</button><button id="installBtn" class="ghost" hidden>Instalar</button></div>
   </header>
 
   <nav class="tabs" aria-label="Seções">
@@ -23,7 +52,7 @@
 
   <main>
     <section id="inicio" class="view active">
-      <div class="hero"><div><p class="eyebrow">TRABALHO OFFLINE • DADOS NO APARELHO</p><h1>Projetos elétricos organizados por cliente</h1><p>Cadastre a obra, desenhe uma planta simplificada, registre circuitos e mantenha o histórico para futuras visitas.</p></div><button class="primary" data-go="cadastros">Começar cadastro</button></div>
+      <div class="hero"><div><p class="eyebrow">OFFLINE PRIMEIRO • SINCRONIZAÇÃO SEGURA</p><h1>Projetos elétricos organizados por cliente</h1><p>Cadastre a obra, desenhe uma planta simplificada, registre circuitos e mantenha o histórico para futuras visitas.</p></div><button class="primary" data-go="cadastros">Começar cadastro</button></div>
       <div id="stats" class="stats"></div>
       <article class="notice warning"><strong>Uso profissional responsável</strong><p>Resultados e dimensionamentos são preliminares. Exigem levantamento em campo e validação por profissional habilitado conforme NBR 5410 vigente, padrão da distribuidora, esquema de aterramento, DR, DPS, proteção contra sobrecorrente, queda de tensão, capacidade de interrupção e demais condições da instalação.</p></article>
       <article class="card"><h2>Projeto ativo</h2><div id="activeSummary"></div></article>
@@ -65,12 +94,17 @@
     <section id="backup" class="view">
       <div class="section-head"><div><p class="eyebrow">PORTABILIDADE</p><h1>Backup e restauração</h1></div></div>
       <div class="grid-2"><article class="card"><h2>Exportar</h2><p>Baixe uma cópia completa de clientes, imóveis, projetos, plantas, dimensionamentos e manutenções.</p><button id="exportBackup" class="primary">Baixar backup JSON</button></article><article class="card"><h2>Importar</h2><p>O arquivo é validado antes da restauração. Você pode mesclar com os dados atuais ou substituí-los.</p><label class="file-button">Escolher backup<input id="importFile" type="file" accept="application/json,.json"></label><div id="importPreview"></div></article></div>
-      <article class="card danger-zone"><h2>Privacidade e armazenamento</h2><p>Os dados ficam somente neste navegador/aparelho. Não há nuvem nem conta. Faça backups periódicos; limpar os dados do navegador pode apagar tudo.</p><button id="clearData" class="danger">Apagar todos os dados</button></article>
+      <article class="card danger-zone"><h2>Privacidade e armazenamento</h2><p>Os dados ficam neste aparelho para uso offline e também são sincronizados na sua conta. O backup manual continua disponível como proteção adicional.</p><button id="clearData" class="danger">Apagar os dados desta conta</button></article>
     </section>
   </main>
 
   <div id="modal" class="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="section-head compact"><h2 id="modalTitle"></h2><button id="modalClose" class="icon" aria-label="Fechar">×</button></div><form id="modalForm"></form></div></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
+  <script src="firebase-sync.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>
+

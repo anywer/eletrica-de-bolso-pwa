@@ -1,4 +1,4 @@
-# Elétrica de Bolso PWA — versão 0.8
+# Elétrica de Bolso PWA — versão 0.8.1
 
 Aplicativo offline-first, com autenticação e sincronização no Firebase, para organizar clientes, imóveis/obras, projetos elétricos, plantas simplificadas, dimensionamentos preliminares e histórico de manutenção.
 
@@ -8,8 +8,8 @@ Aplicativo offline-first, com autenticação e sincronização no Firebase, para
 2. Abra `http://localhost:8080` no navegador. Abrir `index.html` diretamente permite usar boa parte do app, mas a instalação e o cache offline dependem de HTTP/HTTPS.
 3. Crie uma conta, confirme o e-mail e entre.
 4. Cadastre um cliente, um imóvel e um projeto na seção **Clientes**.
-5. Use **Planta** para criar cômodos, posicionar pontos e ligar dois pontos com um trecho de comprimento informado.
-6. Use **Dimensionamento** para registrar premissas e circuitos. Os valores são memória preliminar, não aprovação normativa.
+5. Use **Planta** para criar cômodos, posicionar quadro, iluminação, TUG, TUE e interruptores, e ligar dois pontos com um trecho de comprimento informado.
+6. Em **Dimensionamento**, use **Atualizar pela planta** para trazer potências, cômodos e comprimentos registrados. Os valores são memória preliminar, não aprovação normativa.
 7. Em **Backup**, exporte periodicamente o arquivo JSON e guarde-o em local seguro.
 
 ## Dados e migração
@@ -40,4 +40,5 @@ O aplicativo não declara conformidade ou aprovação normativa. Todo dimensiona
 - `firestore.rules`, `firebase.json`: regras de segurança e configuração do Firestore.
 - `manifest.webmanifest`, `icon.svg`, `sw.js`: instalação e funcionamento offline.
 - `tests/site-check.cjs`: verificações automatizadas básicas.
+- `PLANO-VERSOES.md`: sequência planejada para quantitativo de cabos, croqui assistido e IA opcional.
 

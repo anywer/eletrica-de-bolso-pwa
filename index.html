@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1320">
   <meta name="application-name" content="Elétrica de Bolso">
   <meta name="description" content="Projetos e manutenções elétricas com funcionamento offline e sincronização segura.">
-  <title>Elétrica de Bolso 0.8</title>
+  <title>Elétrica de Bolso 0.8.1</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
     </div>
   </section>
   <header class="topbar">
-    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.8</span></div>
+    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.8.1</span></div>
     <div class="account-area"><span id="syncStatus" class="sync-status" role="status" aria-live="polite">Conectando…</span><span id="userEmail" class="user-email" hidden></span><button id="logoutBtn" class="ghost" hidden>Sair</button><button id="installBtn" class="ghost" hidden>Instalar</button></div>
   </header>
 
@@ -70,10 +70,11 @@
       <div id="noProjectPlan" class="empty-state card">Selecione um projeto em Clientes para editar a planta.</div>
       <div id="planWorkspace" hidden>
         <div class="toolbar" role="toolbar" aria-label="Ferramentas da planta">
-          <button data-tool="select" class="active">↖ Selecionar</button><button data-tool="tug">◉ TUG</button><button data-tool="tue">⬢ TUE</button><button data-tool="switch">⌁ Interruptor</button><button data-tool="light">✦ Iluminação</button><button data-tool="segment">╱ Trecho</button>
+          <button data-tool="select" class="active" aria-pressed="true">↖ Selecionar</button><button data-tool="tug" aria-pressed="false">◉ TUG</button><button data-tool="tue" aria-pressed="false">⬢ TUE</button><button data-tool="switch" aria-pressed="false">⌁ Interruptor</button><button data-tool="light" aria-pressed="false">✦ Iluminação</button><button data-tool="board" aria-pressed="false">▣ Quadro</button><button data-tool="segment" aria-pressed="false">╱ Trecho</button>
         </div>
+        <details class="practical-help"><summary><span class="help-mark" aria-hidden="true">?</span> Guia rápido dos pontos</summary><dl><div><dt>TUG</dt><dd>Tomada de uso geral para cargas comuns.</dd></div><div><dt>TUE</dt><dd>Tomada de uso específico, identificada pelo equipamento e potência.</dd></div><div><dt>Interruptores</dt><dd>Simples comanda de um local; paralelo, de dois; intermediário amplia para três ou mais locais.</dd></div><div><dt>Quadro</dt><dd>Origem dos circuitos e referência futura para calcular trajetos e cabos.</dd></div></dl></details>
         <div class="plan-layout"><div id="planBoard" class="plan-board" tabindex="0" aria-label="Editor da planta"></div><aside id="inspector" class="card"><h2>Propriedades</h2><p class="muted">Selecione um elemento.</p></aside></div>
-        <p class="hint">Toque em uma ferramenta e depois dentro de um cômodo. Arraste pontos para posicionar. Use trechos para registrar percurso e comprimento.</p>
+        <p class="hint">Toque em uma ferramenta e depois dentro de um cômodo. Arraste os pontos para posicionar e deslize a área vazia para navegar pela planta.</p>
       </div>
     </section>
 
@@ -83,8 +84,9 @@
       <div id="sizingContent" hidden>
         <article class="notice warning"><strong>Não é aprovação normativa.</strong><p>Revise método de instalação, temperatura, agrupamento, condutores, corrente de projeto, capacidade de condução, proteção, curto-circuito e queda de tensão. Confirme a NBR 5410 vigente e as exigências locais antes da execução.</p></article>
         <div class="grid-2"><article class="card"><h2>Dados da instalação</h2><div id="sizingForm"></div></article><article class="card"><h2>Resumo</h2><div id="loadSummary"></div></article></div>
-        <article class="card"><div class="section-head compact"><h2>Circuitos</h2><button id="autoCircuits" class="ghost">Sugerir a partir da planta</button></div><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Tensão</th><th>Potência</th><th>Corrente estimada</th><th>Condutor</th><th>Disjuntor</th><th></th></tr></thead><tbody id="circuitTable"></tbody></table></div></article>
+        <article class="card"><div class="section-head compact"><h2>Circuitos</h2><button id="autoCircuits" class="ghost">Atualizar pela planta</button></div><p class="muted">Potências, cômodos e comprimentos identificados nos trechos são trazidos da planta. Revise tensão, condutor, proteção e condições reais antes de executar.</p><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Tensão</th><th>Potência</th><th>Corrente estimada</th><th>Condutor</th><th>Disjuntor</th><th></th></tr></thead><tbody id="circuitTable"></tbody></table></div></article>
         <article class="card"><h2>Quadro e equipotencialização</h2><div id="boardChecklist"></div></article>
+        <details class="practical-help"><summary><span class="help-mark" aria-hidden="true">?</span> Entenda as abreviações</summary><dl><div><dt>DR</dt><dd>Proteção diferencial residual contra correntes de fuga; tipo e sensibilidade exigem avaliação.</dd></div><div><dt>DPS</dt><dd>Dispositivo de proteção contra surtos, coordenado com a instalação.</dd></div><div><dt>N–PE</dt><dd>Relação entre neutro e proteção, definida pelo esquema de aterramento e pelo ponto de origem.</dd></div></dl></details>
       </div>
     </section>
 

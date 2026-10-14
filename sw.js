@@ -1,4 +1,4 @@
-const CACHE='eletrica-bolso-v0.8.1';
+const CACHE='eletrica-bolso-v0.9.0';
 const ASSETS=['./','./index.html','./styles.css','./firebase-sync.js','./app.js','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install',event=>event.waitUntil(
@@ -29,4 +29,3 @@ self.addEventListener('fetch',event=>{
     })));
   }
 });
-

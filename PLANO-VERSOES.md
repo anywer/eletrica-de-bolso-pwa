@@ -1,42 +1,65 @@
 # Plano de evolução — Elétrica de Bolso
 
-Princípios: experiência móvel primeiro, funcionamento offline, custo zero no núcleo e cálculos sempre apresentados como preliminares para validação profissional e normativa.
+Princípios: celular primeiro, funcionamento offline, custo zero no núcleo e resultados elétricos sempre preliminares para validação profissional e normativa.
 
-## v0.8.1 — planta móvel e dados conectados
+## Fluxo definitivo
 
-- Navegação por toque mais confortável e propriedades abaixo da planta no celular.
-- Pontos para quadro elétrico, TUE identificada e interruptores simples, paralelos e intermediários.
-- Circuitos atualizados com potência, cômodos e comprimento dos trechos registrados na planta.
-- Ajuda contextual para TUG, TUE, DR, DPS e N–PE.
+1. **Montar a planta arquitetônica**: dimensões, posição e rotação dos cômodos, sem pontos elétricos.
+2. **Validar a planta completa**: conferir medidas, encaixes e escala.
+3. **Selecionar um cômodo**: o celular mostra somente o ambiente escolhido.
+4. **Projetar a elétrica do cômodo**: inserir pontos, alturas, módulos, tensão, corrente e cargas.
+5. **Ligar circuitos e trechos**: relacionar pontos ao quadro e registrar comprimentos.
+6. **Dimensionar e quantificar**: gerar memória preliminar e lista de materiais para revisão.
 
-## v0.9 — quantitativo preliminar de condutores e orçamento
+## v0.9 — construtor simplificado da planta
 
-1. Modelar cada circuito com número de fases, neutro, proteção e retornos.
-2. Relacionar interruptores às luminárias e identificar viajantes de comandos paralelos/intermediários.
-3. Somar os trechos percorridos por cada via, com margem configurável separada do valor medido.
-4. Produzir lista por seção, função e cor sugerida, deixando explícito que cores, método de instalação e dimensionamento exigem validação conforme a NBR 5410 vigente.
-5. Exportar resumo de materiais para orçamento, sem declarar aprovação normativa.
+- Modo **Planta da casa**, sem ferramentas elétricas.
+- Cômodos com largura e comprimento reais em metros, posição e rotação.
+- Grade, encaixe opcional, zoom, deslocamento e botão para enquadrar toda a casa.
+- Lista de cômodos por categoria: sala, cozinha, quarto, banheiro, circulação, área externa e personalizado.
+- Portas e aberturas simples somente quando necessárias para compreender a distribuição.
+- Confirmação da planta antes de liberar a etapa elétrica.
 
-## v0.10 — croqui assistido sem IA
+## v0.9.1 — elétrica por cômodo
 
-1. Fotografar ou importar um croqui como imagem de fundo.
-2. Corrigir rotação, definir escala por uma medida conhecida e ajustar transparência.
-3. Traçar paredes/cômodos por cima da imagem e converter o traçado em elementos editáveis.
-4. Manter todo o processamento no aparelho e permitir remover a imagem após a vetorização.
+- Tela móvel focada em um único cômodo, com navegação anterior/próximo.
+- Categorias: tomadas, iluminação, comandos, cargas específicas e quadro.
+- Altura do ponto: baixa, média, alta, teto ou medida personalizada em centímetros.
+- Composição do ponto: tomada simples, dupla, tripla ou combinação de módulos.
+- Tomadas de 10 A ou 20 A e tensão de 127 V, 220 V ou valor confirmado em campo.
+- Interruptores simples, paralelos e intermediários, inclusive combinação interruptor + tomada.
+- TUE nomeada e ligada ao equipamento, potência e tensão correspondentes.
+- Ícones diferentes quando pontos ocuparem a mesma posição 2D, evitando sobreposição invisível.
 
-Esta etapa entrega a maior parte do ganho de uso com baixo risco, sem custo de serviço e sem enviar plantas de clientes para terceiros.
+## v0.10 — importação assistida de planta
 
-## v0.11 — IA opcional para sugerir o traçado
+1. Importar PDF ou imagem como referência de fundo.
+2. Para PDF vetorial, aproveitar linhas e textos quando tecnicamente possível.
+3. Para PDF digitalizado ou fotografia, permitir rotação, recorte e contraste.
+4. Calibrar a escala usando uma medida conhecida do desenho.
+5. Traçar ou confirmar os cômodos sobre a referência e converter em elementos editáveis.
 
-- Detectar paredes, portas e textos e gerar somente uma sugestão editável.
-- Exigir confirmação de escala e revisão de todos os elementos antes de criar circuitos ou quantitativos.
-- Avaliar processamento local no navegador; usar serviço externo somente com consentimento, política de privacidade e custo claramente informado.
-- Nunca dimensionar ou aprovar automaticamente uma instalação apenas a partir de uma fotografia.
+Essa abordagem funciona offline e não precisa de IA para entregar valor. A imagem de referência poderá ser removida depois da conversão.
 
-## Sugestões de produto
+## v0.11 — circuitos e quantitativo preliminar
 
-- Salvar automaticamente cada edição e mostrar claramente o estado de sincronização.
-- Usar botões grandes e ações progressivas no celular: cômodo → pontos → ligações → circuitos → materiais.
-- Manter o ícone `?` junto de termos técnicos e abrir explicações curtas, com referência à necessidade de validação profissional.
-- Antes do quantitativo de cabos, criar uma verificação de projeto que destaque pontos sem circuito, trechos sem comprimento e cargas sem potência.
+- Relacionar cada ponto ao circuito e ao quadro.
+- Modelar fases, neutro, proteção, retornos e viajantes separadamente.
+- Somar os comprimentos percorridos por cada condutor, seção e função.
+- Sugerir cores por função, deixando explícita a necessidade de validar a NBR 5410 vigente e o padrão adotado.
+- Produzir lista de materiais e resumo para orçamento com margem configurável separada da medida real.
+- Destacar pontos sem circuito, trechos sem comprimento e cargas sem potência.
 
+## v0.12 — IA opcional para sugerir a planta
+
+- Detectar paredes, ambientes, cotas, portas e textos em croquis ou documentos digitalizados.
+- Gerar somente uma sugestão editável; nunca substituir a confirmação do usuário.
+- Exigir calibração de escala e revisão de cada ambiente antes da etapa elétrica.
+- Priorizar processamento local. Serviço externo somente com consentimento, política de privacidade e custo informado.
+- Nunca dimensionar ou aprovar automaticamente uma instalação a partir de uma fotografia.
+
+## Ajuda prática
+
+- Manter um ícone `?` junto de siglas, medidas e escolhas técnicas.
+- Explicar o que é, quando se usa e qual informação precisa ser confirmada em campo.
+- Usar a sequência: planta → cômodo → pontos → circuitos → condutores → materiais.

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1320">
   <meta name="application-name" content="Elétrica de Bolso">
   <meta name="description" content="Projetos e manutenções elétricas com funcionamento offline e sincronização segura.">
-  <title>Elétrica de Bolso 0.8.1</title>
+  <title>Elétrica de Bolso 0.9</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
     </div>
   </section>
   <header class="topbar">
-    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.8.1</span></div>
+    <div><span class="brand-mark">⚡</span><strong>Elétrica de Bolso</strong><span class="version">v0.9</span></div>
     <div class="account-area"><span id="syncStatus" class="sync-status" role="status" aria-live="polite">Conectando…</span><span id="userEmail" class="user-email" hidden></span><button id="logoutBtn" class="ghost" hidden>Sair</button><button id="installBtn" class="ghost" hidden>Instalar</button></div>
   </header>
 
@@ -66,13 +66,15 @@
     </section>
 
     <section id="planta" class="view">
-      <div class="section-head"><div><p class="eyebrow">EDITOR SIMPLIFICADO</p><h1>Planta baixa</h1><p id="planContext" class="muted"></p></div><div class="actions"><button id="newRoom">+ Cômodo</button><button id="fitPlan" class="ghost">Centralizar</button></div></div>
+      <div class="section-head"><div><p class="eyebrow">EDITOR SIMPLIFICADO</p><h1>Planta baixa</h1><p id="planContext" class="muted"></p></div><div class="actions"><button id="newRoom">+ Cômodo</button><button id="zoomOut" class="ghost" aria-label="Diminuir zoom">−</button><button id="zoomIn" class="ghost" aria-label="Aumentar zoom">+</button><button id="fitPlan" class="ghost">Enquadrar</button></div></div>
       <div id="noProjectPlan" class="empty-state card">Selecione um projeto em Clientes para editar a planta.</div>
       <div id="planWorkspace" hidden>
-        <div class="toolbar" role="toolbar" aria-label="Ferramentas da planta">
+        <div class="plan-steps" role="group" aria-label="Etapa da planta"><button id="architectureStage" class="active" aria-pressed="true"><span>1</span> Planta da casa</button><button id="electricalStage" aria-pressed="false"><span>2</span> Elétrica</button></div>
+        <article id="architectureGuide" class="notice"><strong>Monte primeiro a construção</strong><p>Informe as medidas reais, posicione e rotacione os cômodos. Os pontos elétricos aparecem somente depois da confirmação.</p><button id="confirmArchitecture" class="primary">Confirmar planta e continuar</button></article>
+        <div id="electricalTools" class="toolbar" role="toolbar" aria-label="Ferramentas elétricas" hidden>
           <button data-tool="select" class="active" aria-pressed="true">↖ Selecionar</button><button data-tool="tug" aria-pressed="false">◉ TUG</button><button data-tool="tue" aria-pressed="false">⬢ TUE</button><button data-tool="switch" aria-pressed="false">⌁ Interruptor</button><button data-tool="light" aria-pressed="false">✦ Iluminação</button><button data-tool="board" aria-pressed="false">▣ Quadro</button><button data-tool="segment" aria-pressed="false">╱ Trecho</button>
         </div>
-        <details class="practical-help"><summary><span class="help-mark" aria-hidden="true">?</span> Guia rápido dos pontos</summary><dl><div><dt>TUG</dt><dd>Tomada de uso geral para cargas comuns.</dd></div><div><dt>TUE</dt><dd>Tomada de uso específico, identificada pelo equipamento e potência.</dd></div><div><dt>Interruptores</dt><dd>Simples comanda de um local; paralelo, de dois; intermediário amplia para três ou mais locais.</dd></div><div><dt>Quadro</dt><dd>Origem dos circuitos e referência futura para calcular trajetos e cabos.</dd></div></dl></details>
+        <details id="electricalHelp" class="practical-help" hidden><summary><span class="help-mark" aria-hidden="true">?</span> Guia rápido dos pontos</summary><dl><div><dt>TUG</dt><dd>Tomada de uso geral para cargas comuns.</dd></div><div><dt>TUE</dt><dd>Tomada de uso específico, identificada pelo equipamento e potência.</dd></div><div><dt>Interruptores</dt><dd>Simples comanda de um local; paralelo, de dois; intermediário amplia para três ou mais locais.</dd></div><div><dt>Quadro</dt><dd>Origem dos circuitos e referência futura para calcular trajetos e cabos.</dd></div></dl></details>
         <div class="plan-layout"><div id="planBoard" class="plan-board" tabindex="0" aria-label="Editor da planta"></div><aside id="inspector" class="card"><h2>Propriedades</h2><p class="muted">Selecione um elemento.</p></aside></div>
         <p class="hint">Toque em uma ferramenta e depois dentro de um cômodo. Arraste os pontos para posicionar e deslize a área vazia para navegar pela planta.</p>
       </div>
@@ -111,4 +113,3 @@
   <script src="app.js" defer></script>
 </body>
 </html>
-

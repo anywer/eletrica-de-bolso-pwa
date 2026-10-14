@@ -1,4 +1,4 @@
-ELÉTRICA DE BOLSO PWA 0.8.1
+ELÉTRICA DE BOLSO PWA 0.9
 
 ABRIR NO COMPUTADOR
 1. Extraia o ZIP.
@@ -18,11 +18,13 @@ PRIMEIROS PASSOS
 1. Crie uma conta, confirme o e-mail recebido e entre.
 2. Clientes > + Cliente.
 3. Cadastre o imóvel/obra e crie um projeto diretamente nele.
-4. Planta > + Cômodo; selecione uma ferramenta e toque dentro do cômodo.
-5. Para um trecho, toque em "Trecho", depois em dois pontos e informe o comprimento.
-6. Dimensionamento > Atualizar pela planta; revise todas as premissas e proteções.
-7. Manutenções > registre cada visita/serviço.
-8. Backup > baixe um JSON regularmente.
+4. Planta > + Cômodo; informe categoria, largura, comprimento e rotação.
+5. Posicione os cômodos, enquadre a casa e confirme a planta.
+6. Na etapa Elétrica, escolha uma ferramenta e toque dentro do cômodo.
+7. Para um trecho, toque em "Trecho", depois em dois pontos e informe o comprimento.
+8. Dimensionamento > Atualizar pela planta; revise todas as premissas e proteções.
+9. Manutenções > registre cada visita/serviço.
+10. Backup > baixe um JSON regularmente.
 
 IMPORTANTE
 Os cálculos e registros são preliminares. Não representam aprovação normativa.
@@ -33,5 +35,4 @@ DADOS
 Os dados ficam no aparelho para uso offline e são sincronizados no Firestore da conta.
 Cada conta usa uma área própria. Guarde também backups JSON fora do aparelho.
 
-VERSÃO: 0.8.1
-
+VERSÃO: 0.9.0

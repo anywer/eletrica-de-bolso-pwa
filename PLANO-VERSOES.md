@@ -20,9 +20,17 @@ Princípios: celular primeiro, funcionamento offline, custo zero no núcleo e re
 - Portas e aberturas simples somente quando necessárias para compreender a distribuição.
 - Confirmação da planta antes de liberar a etapa elétrica.
 
-## v0.9.1 — elétrica por cômodo
+## v0.9.1 — geometria conectada e elétrica por cômodo
 
-- Tela móvel focada em um único cômodo, com navegação anterior/próximo.
+- Área e largura/profundidade vinculadas, com escala visual proporcional.
+- Encaixe magnético entre arestas e conexões que movem cômodos unidos em conjunto.
+- Liberação explícita das arestas conectadas.
+- Zoom da planta por botões e gesto de pinça.
+- Etapa elétrica separada, mostrando um cômodo por vez.
+- Reconhecimento de paredes compartilhadas e exibição do mesmo ponto nos ambientes relacionados.
+
+## v0.9.2 — propriedades completas dos pontos
+
 - Categorias: tomadas, iluminação, comandos, cargas específicas e quadro.
 - Altura do ponto: baixa, média, alta, teto ou medida personalizada em centímetros.
 - Composição do ponto: tomada simples, dupla, tripla ou combinação de módulos.

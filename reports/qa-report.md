@@ -1,17 +1,14 @@
-# Relatório de testes — v0.9
+# Relatório de testes — v0.9.1
 
 Resultado: todos os testes executados passaram.
 
-## Automatizados
-
-- Validação estática de seções, autenticação, modelo de dados, Firestore, cache e manifesto.
-- Verificação de sintaxe de `app.js` e `sw.js`.
-- Fluxo em Chromium: login, cliente, imóvel, projeto, cômodo com 4 × 3 m e rotação de 90°, zoom, confirmação da planta, TUG, TUE, interruptor paralelo, quadro, trecho de 8 m, circuito e manutenção.
-- Persistência após recarregar e preservação dos pontos ao alternar entre as etapas arquitetônica e elétrica.
-- Migração da v0.7 para a v0.9 com cópia local de recuperação.
-- Responsividade sem rolagem horizontal em desktop, tablet e celular de 390 × 844.
-
-## Resultado funcional
-
-A planta da casa pode ser montada sem interferência dos pontos elétricos. Depois da confirmação, a etapa elétrica é liberada e continua alimentando o dimensionamento preliminar.
+- Área de 6 m² com largura de 3 m calculou profundidade de 2 m.
+- Cômodo de 4 × 3 m manteve proporção visual de 4:3 e área de 12 m².
+- Arestas foram encaixadas, conectadas, liberadas e reconectadas.
+- A pinça simulada ampliou o cômodo e o botão Enquadrar restaurou a visualização.
+- A etapa elétrica exibiu somente o cômodo selecionado.
+- Um ponto colocado na parede comum apareceu também no cômodo vizinho.
+- Dados da v0.7 foram migrados para o esquema 9 com cópia de recuperação.
+- Cadastro, circuitos, manutenção, persistência, autenticação e cache offline passaram na regressão.
+- Não houve overflow horizontal em desktop, tablet, celular vertical ou celular em paisagem.
 

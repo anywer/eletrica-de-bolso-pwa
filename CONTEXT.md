@@ -51,3 +51,15 @@ _Avoid_: Potência da tomada
 **Referência de planta**:
 PDF, imagem ou fotografia usada como fundo para montar a planta arquitetônica editável.
 _Avoid_: Planta importada, enquanto ainda não tiver sido convertida e validada
+
+**Aresta compartilhada**:
+Parede coincidente entre dois cômodos alinhados; pontos colocados nela podem ser vistos a partir dos dois ambientes.
+_Avoid_: Ponto duplicado
+
+**Conexão de aresta**:
+Vínculo criado pelo encaixe magnético que mantém cômodos unidos durante o movimento até a liberação explícita.
+_Avoid_: Agrupamento, quando a relação representa uma parede comum
+
+**Elétrica por cômodo**:
+Etapa posterior ao croqui arquitetônico, na qual somente o ambiente selecionado e seus pontos compartilhados são exibidos.
+_Avoid_: Planta completa, quando a tela está focada em um ambiente
